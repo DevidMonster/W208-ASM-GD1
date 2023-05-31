@@ -1,0 +1,20 @@
+<div class="row justify-content-end p-2">
+    <form (ngSubmit)="search()" class="d-flex col-4" role="search">
+        <input class="form-control me-2" name="value" [(ngModel)]="value" type="search" placeholder="Search"
+            aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <h1 class="text-center p-5" *ngIf="products && products.length == 0">Không có sản phẩm nào</h1>
+    <div class="container row g-3" *ngIf="products && products.length > 0">
+        <div class="col-4" *ngFor="let product of products">
+            <div class="card mx-auto" style="width: 18rem;">
+                <img src="{{product.imgUrl}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.price}} $</p>
+                    <a routerLink="/product/{{product.id}}" class="btn btn-primary">View detail</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
